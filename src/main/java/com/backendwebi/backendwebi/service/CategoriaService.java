@@ -27,6 +27,4 @@ public class CategoriaService {
         }
         return categoriaRepository.save(categoriaModel);
     }
-
-
 }

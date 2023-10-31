@@ -14,11 +14,11 @@ public class CategoriaController {
     private final CategoriaService categoriaService;
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<CategoriaModel> cadastrar(
+    public ResponseEntity<String> cadastrar(
             @PathVariable("torNrId") int torNrId,
             @RequestBody CategoriaModel categoriaModel) {
 
         CategoriaModel categoriaCadastrada = categoriaService.cadastrar(torNrId, categoriaModel);
-        return new ResponseEntity<>(categoriaCadastrada, HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Categoria cadastrada com sucesso!");
     }
 }
