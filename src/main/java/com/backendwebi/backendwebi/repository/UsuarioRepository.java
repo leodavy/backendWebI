@@ -12,7 +12,6 @@ import java.util.List;
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Integer> {
     @Query(nativeQuery = true, value = "select * from public.usu_usuario where usu_tx_nome =:nome")
     List<UsuarioModel> encontrarUsuarioPeloNome(@Param("nome") String nome);
-
     UsuarioModel findByUsuTxLogin(String usuTxLogin);
 
 }

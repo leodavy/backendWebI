@@ -24,6 +24,9 @@ public class UsuarioService {
         UsuarioModel usuario = usuarioRepository.findByUsuTxLogin(usuTxLogin);
         return usuario != null && usuario.getUsuTxSenha().equals(usuTxSenha);
     }
+    public List<UsuarioModel> listarTodosUsuarios(){
+        return usuarioRepository.findAll();
+    }
     public Optional<UsuarioModel> encontrarUsuarioPeloId(int id){
         return usuarioRepository.findById(id);
     }
