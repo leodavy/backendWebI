@@ -35,12 +35,17 @@ public class UsuarioController {
     public List<UsuarioModel> listarTodosUsuarios(){
         return usuarioService.listarTodosUsuarios();
     }
-    @GetMapping("/encontrarUsuarioPeloId/{id}")
-    public Object encontrarUsuarioPeloId(@PathVariable int id){
-        return usuarioService.encontrarUsuarioPeloId(id);
+    @GetMapping("/encontrarUsuarioPeloId/{usuNrId}")
+    public Object encontrarUsuarioPeloId(@PathVariable int usuNrId){
+        return usuarioService.encontrarUsuarioPeloId(usuNrId);
     }
-    @GetMapping("/encontrarUsuarioPeloNome/{nome}")
-    public List<UsuarioModel> encontrarUsuarioPeloNome(@PathVariable String nome){
-        return usuarioService.encontrarUsuarioPeloNome(nome);
+    @GetMapping("/buscarPorNome/{usuTxNome}")
+    public ResponseEntity<UsuarioModel> buscarPorNome(@PathVariable String usuTxNome) {
+        UsuarioModel usuario = usuarioService.encontrarUsuarioPeloNome(usuTxNome);
+        if (usuario != null) {
+            return ResponseEntity.ok(usuario);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

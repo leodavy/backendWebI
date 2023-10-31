@@ -30,7 +30,9 @@ public class UsuarioService {
     public Optional<UsuarioModel> encontrarUsuarioPeloId(int id){
         return usuarioRepository.findById(id);
     }
-    public List<UsuarioModel> encontrarUsuarioPeloNome(String nome){
-        return usuarioRepository.encontrarUsuarioPeloNome(nome);
+    public UsuarioModel encontrarUsuarioPeloNome(String usuTxNome){
+        return usuarioRepository.findByUsuTxNome(usuTxNome);
     }
+
+
 }
