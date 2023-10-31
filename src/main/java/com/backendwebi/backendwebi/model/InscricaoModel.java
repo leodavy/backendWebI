@@ -12,22 +12,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "cat_categoria", schema = "public")
-public class CategoriaModel {
+@Table(name = "ins_inscricao", schema = "public")
+public class InscricaoModel {
 
     @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cat_nr_id")
-    private int catNrId;
+    @Column(name = "ins_nr_id")
+    private int insNrId;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "tor_nr_id")
-    private TorneioModel torNrId;
+    @JoinColumn(name = "usu_nr_id1")
+    private UsuarioModel usuNrId1;
 
     @NotNull
-    @Column(name = "cat_tx_nome")
-    private String catTxNome;
+    @ManyToOne
+    @JoinColumn(name = "usu_nr_id2")
+    private UsuarioModel usuNrId2;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "cat_nr_id")
+    private CategoriaModel catNrId;
 
 }

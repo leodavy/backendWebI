@@ -15,19 +15,26 @@ import java.util.Date;
 @Entity
 @Table(name = "usu_usuario", schema = "public")
 public class UsuarioModel {
+
+    @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "usu_nr_id")
     private int usuNrId;
+
+    @NotNull
     @Column(name = "usu_tx_nome")
-    @NotNull
     private String usuTxNome;
+
+    @NotNull
     @Column(name = "usu_tx_login")
-    @NotNull
     private String usuTxLogin;
-    @Column(name = "usu_tx_senha")
+
     @NotNull
+    @Column(name = "usu_tx_senha")
     private String usuTxSenha;
+
+
     @Column(name = "usu_dt_cadastro")
     private Date usuDtCadastro;
 }
