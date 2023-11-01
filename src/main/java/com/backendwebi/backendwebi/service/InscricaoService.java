@@ -9,6 +9,7 @@ import com.backendwebi.backendwebi.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,13 +19,13 @@ public class InscricaoService {
     private final UsuarioRepository usuarioRepository;
     private final CategoriaRepository categoriaRepository;
 
-    public InscricaoModel realizarInscricaoTorneio(int usuNrId1, int usuNrId2, int catNrId){
+    public InscricaoModel realizarInscricaoTorneio(int usuNrId1, int usuNrId2, int catNrId) {
         Optional<UsuarioModel> usuarioModel1 = usuarioRepository.findById(usuNrId1);
         Optional<UsuarioModel> usuarioModel2 = usuarioRepository.findById(usuNrId2);
         Optional<CategoriaModel> categoriaModel = categoriaRepository.findById(catNrId);
 
         InscricaoModel inscricaoModel = new InscricaoModel();
-        if(usuarioModel1.isPresent() && usuarioModel2.isPresent() && categoriaModel.isPresent()){
+        if (usuarioModel1.isPresent() && usuarioModel2.isPresent() && categoriaModel.isPresent()) {
             inscricaoModel.setUsuNrId1(usuarioModel1.get());
             inscricaoModel.setUsuNrId2(usuarioModel2.get());
             inscricaoModel.setCatNrId(categoriaModel.get());
@@ -34,5 +35,10 @@ public class InscricaoService {
             System.out.println("Usuário ou categoria não encontrado");
         }
         return inscricaoRepository.save(inscricaoModel);
+    }
+
+    public List<InscricaoModel> listarInscritosTorneioPorCategoria(int catNrId) {
+     return inscricaoRepository.listarInscritosCategoria(catNrId);
+
     }
 }

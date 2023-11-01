@@ -6,9 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/torneios/{torNrId}/categorias/{catNrId}/")
+@RequestMapping("/torneios/{torNrId}/categorias/{catNrId}")
 public class InscricaoController {
 
     private final InscricaoService inscricaoService;
@@ -23,6 +25,12 @@ public class InscricaoController {
         InscricaoModel inscricaoModel = inscricaoService.realizarInscricaoTorneio(usuNrId1, usuNrId2, catNrId);
         return ResponseEntity.ok(inscricaoModel);
 
+    }
+
+    @GetMapping("/listarInscritos")
+    public ResponseEntity<List<InscricaoModel>> listarInscricoesPorCategoria(@PathVariable("torNrId") int torNrId,@PathVariable("catNrId") int catNrId){
+        List<InscricaoModel> inscricaoModels = inscricaoService.listarInscritosTorneioPorCategoria(catNrId);
+        return ResponseEntity.ok(inscricaoModels);
     }
 
 }
