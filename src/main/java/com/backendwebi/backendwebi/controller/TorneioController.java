@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -30,6 +32,8 @@ public class TorneioController {
     @GetMapping("/{torNrId}/listarTodasCategorias")
     public ResponseEntity<List<CategoriaModel>> listarTodasCategorias(@PathVariable int torNrId) {
         List<CategoriaModel> categorias = torneioService.listarCategoriasTorneio(torNrId);
+        Map<String, Object> response = new HashMap<>();
+        response.put("categorias", categorias);
         return ResponseEntity.ok(categorias);
     }
 }
