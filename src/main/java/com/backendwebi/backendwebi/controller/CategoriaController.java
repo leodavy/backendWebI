@@ -15,7 +15,7 @@ public class CategoriaController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<String> cadastrar(
-            @PathVariable("torNrId") int torNrId,
+            @PathVariable int torNrId,
             @RequestBody CategoriaModel categoriaModel) {
 
         CategoriaModel categoriaCadastrada = categoriaService.cadastrar(torNrId, categoriaModel);

@@ -25,4 +25,8 @@ public class TorneioModel {
     @NotNull
     @Column(name = "tor_tx_nome")
     private String torTxNome;
+
+    public TorneioModel(int torNrId) {
+        this.torNrId = torNrId;
+    }
 }

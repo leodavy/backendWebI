@@ -30,4 +30,8 @@ public class CategoriaModel {
     @Column(name = "cat_tx_nome")
     private String catTxNome;
 
+    public CategoriaModel(int catNrId) {
+        this.catNrId = catNrId;
+    }
+
 }
